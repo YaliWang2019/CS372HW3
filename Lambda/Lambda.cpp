@@ -18,6 +18,13 @@ int Foo(int a, int b) {
 	return a + b;
 }
 
+void scan(int* a, int length, std::function<void(int)> process)
+{
+	for (int i = 0; i < length; i++) {
+		process(a[i]);
+	}
+}
+
 int main() {
 
 	// Lambda functions are similar to anonymous functions
@@ -63,9 +70,22 @@ int main() {
 	//f.join();
 	
 	// Lambda callBack
-	callBack([]() {
-		cout << "This is a lambda. \n" <<endl;
-	});
-	system("pause");
+	//callBack([]() {
+	//	cout << "This is a lambda. \n" <<endl;
+	//});
+	//system("pause");
+
+
+	// Variable captrue
+	// The process function only works on values
+	// greater than a certain threshold.
+	int a[10] = { 19, 17, 15, 13, 11, 9, 7, 5, 3, 1 };
+	int threshold = 5;
+	scan(a, 10,
+		[threshold](int v)
+		{ if (v > threshold) { printf("%i ", v); } }
+	);
+	printf("\n");
+	return 0;
 }
 
