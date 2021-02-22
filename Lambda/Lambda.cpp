@@ -1,6 +1,8 @@
 #include <algorithm>
 #include <iostream>
+#include <thread>
 #include <vector>
+#include <chrono>
 
 using namespace std;
 
@@ -34,16 +36,22 @@ int main() {
 	//cout << c << endl;
 
 	// Formula adder = kn.(kx.(+ x n))
-	auto f = [](int n) {
-		return [n](int x) {
-			return n + x;
-		};
-	};
+	//auto f = [](int n) {
+	//	return [n](int x) {
+	//		return n + x;
+	//	};
+	//};
 
-	int c = f(1)(2);
+	//int c = f(1)(2);
 
-	cout << c << endl;
+	//cout << c << endl;
 
-
+	// Lambda executed as a thread parameter
+	string s = "test";
+	thread f = thread([&s](int a, int b) {
+		cout << s << endl;
+		cout << a + b << endl;
+	}, 2, 3);
+	f.join();
 }
 
