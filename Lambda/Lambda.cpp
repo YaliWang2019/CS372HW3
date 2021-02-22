@@ -7,6 +7,13 @@
 
 using namespace std;
 
+// []: Does not capture any external variables \n
+// [=]: Captures all external variables by values \n
+// [&]: Captures all external variables by reference \n
+// [x, &y]: x is captured by value, y is captured by reference \n
+// [=, &z]: z is captured by reference, and other variables are captured by value \n
+// [&, x]: x is captured by value, and the remaining variables are captured by reference \n
+
 std::function<void()> Fun;
 
 void callBack(std::function<void()> fun) {
