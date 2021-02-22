@@ -26,11 +26,22 @@ int main() {
 
 	// Function nested in another function
 	// Could be used in multithreading and parallel
-	int c = [](int m) {
-		return [m](int n) {
-		return m + n;
-		}(1);
-	}(2);
+	//int c = [](int m) {
+	//	return [m](int n) {
+	//	return m + n;
+	//	}(1);
+	//}(2);
+	//cout << c << endl;
+
+	// Formula adder = kn.(kx.(+ x n))
+	auto f = [](int n) {
+		return [n](int x) {
+			return n + x;
+		};
+	};
+
+	int c = f(1)(2);
+
 	cout << c << endl;
 
 
